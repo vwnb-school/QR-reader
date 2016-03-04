@@ -7,7 +7,29 @@
 
 <style type="text/css">
 
+body{
+	margin:0;
+	padding:0;
+	font-size:1em;
+	font-family: Arial; /* rather use some google font */
+}
 
+h1, p{
+	margin:1em 0;
+}
+
+#mainbody{
+	width:auto;
+	max-width:1024px;
+	position:relative;
+	margin:0 auto;
+	padding:1em 1em 2em 1em;
+}
+
+video{
+	width:100%;
+	border:1px solid #ddd;
+}
 
 </style>
 
@@ -17,22 +39,24 @@
 </head>
 
 <body>
-<div id="main">
 
 <div id="mainbody">
 
-<div id="outdiv">
+	<h1>Museum QR scanner</h1>
+	<p>Point your camera at a QR code on the wall to access media or text</p>
+	
+	<div id="outdiv">
+	</div>
+
+	<div id="result"></div>
+	</div>
+	
 </div>
-
-
-<div id="result"></div>
-
-</div>
-
 
 <canvas id="qr-canvas" width="800" height="600"></canvas>
 
 <script type="text/javascript">load();</script>
+
 </body>
 
 </html>
