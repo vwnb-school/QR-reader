@@ -103,11 +103,17 @@ function htmlEntities(str) {
 
 function read(a)
 {
-    var html="<br>";
-    if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
-        html+="<a target='_blank' href='"+a+"'>"+a+"</a><br>";
-    html+="<b>"+htmlEntities(a)+"</b><br><br>";
-    document.getElementById("result").innerHTML=html;
+    var html="";
+    if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0){
+		if(confirm("Opening "+a)){
+			window.location.assign(a);
+		}
+	}else{
+		alert("Found non-url content");
+	}
+
+	html+=htmlEntities(a)+"<br><br>";
+	document.getElementById("result").innerHTML=html;
 }	
 
 function isCanvasSupported(){
@@ -157,7 +163,7 @@ function setwebcam()
         n.getUserMedia({video: true, audio: false}, success, error);
     else
     if(n.mediaDevices.getUserMedia)
-        n.mediaDevices.getUserMedia({video: { facingMode: "environment"} , audio: false})
+        n.mediaDevices.getUserMedia({video: { facingMode: { exact: "environment" } } , audio: false})
             .then(success)
             .catch(error);
     else
